@@ -1,0 +1,26 @@
+services:
+  postgresdb:
+    image: postgres
+    container_name: pgdb
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: tesca
+      POSTGRES_PASSWORD: tesca
+      POSTGRES_DB: tesca
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin 
+      MONGO_INITDB_ROOT_PASSWORD: mongopasswd
+    volumes:
+      - mymongodata:/data/db
+      - type: bind
+        source: ./mongo-entrypoint
+        target: /docker-entrypoint-initdb.d/
+
+volumes:
+  mymongodata:
