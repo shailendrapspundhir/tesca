@@ -8,3 +8,11 @@ services:
       POSTGRES_USER: tesca
       POSTGRES_PASSWORD: tesca
       POSTGRES_DB: tesca
+  mongodb:
+    ports:
+      - "27017:27017"
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=tesca
+      - MONGO_INITDB_ROOT_PASSWORD=tesca
+    image: mongo
